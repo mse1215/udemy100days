@@ -15,6 +15,7 @@ h1 {
 }
 p {
   font-family: "Noto Serif KR", sans-serif;
+  margin-bottom: 20px;
 }
 a {
   color: rgb(167, 1, 78);

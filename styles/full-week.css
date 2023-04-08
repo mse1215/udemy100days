@@ -1,11 +1,26 @@
+header {
+  margin-bottom: 64px;
+}
+
 h1 {
   font-size: 48px;
   color: rgb(71, 62, 62);
+  margin: 12px p;
 }
 
+#description {
+  margin-bottom: 36px;
+}
+
+/* header {
+  margin-bottom: 36px;
+} */
+
 a {
+  padding: 10px 48px;
   background-color: rgb(167, 1, 78);
   color: white;
+  border: 1px solid rgb(167, 1, 78);
   border-radius: 4px;
   font-size: 24px;
 }
@@ -16,10 +31,29 @@ a:hover {
 
 ol {
   list-style: none;
+  width: 300px;
+  margin: 0px auto 0 auto;
+  padding: 0;
 }
 
 li {
+  padding: 10px;
   margin: 15px;
   background-color: rgb(223, 136, 124);
   border-radius: 6px;
+}
+
+h2 {
+  color: rgb(78, 13, 5);
+  font-family: "Oswald", sans-serif;
+}
+
+/* main p {
+  margin: 12px;
+  color: rgb(71, 29, 22;
+} */
+
+.highlight {
+  margin: 12px;
+  background-color: rgb(224, 110, 110);
 }
