@@ -1,3 +1,10 @@
+body {
+  text-align: center;
+  background-color: rgb(233, 215, 207);
+  color: rgb(83, 75, 75);
+  margin: 50px;
+}
+
 header {
   margin-bottom: 64px;
 }
@@ -5,11 +12,14 @@ header {
 h1 {
   font-size: 48px;
   color: rgb(71, 62, 62);
-  margin: 12px p;
+  margin: 0px;
 }
 
 #description {
-  margin-bottom: 36px;
+  margin: 50px;
+  font-size: 25px;
+  font-family: "Noto Serif KR", sans-serif;
+  font-style: bold;
 }
 
 /* header {
@@ -17,15 +27,19 @@ h1 {
 } */
 
 a {
-  padding: 10px 48px;
+  padding: 12px 48px;
   background-color: rgb(167, 1, 78);
   color: white;
   border: 1px solid rgb(167, 1, 78);
-  border-radius: 4px;
-  font-size: 24px;
+  border-radius: 50px;
+  font-family: "Noto Serif KR", sans-serif;
+  font-size: 15px;
+  display: inline-block;
+  margin: 50px;
+  text-decoration: none;
 }
 a:hover {
-  text-decoration: none;
+  text-decoration: underline;
   background-color: rgb(180, 12, 90);
 }
 
@@ -37,10 +51,11 @@ ol {
 }
 
 li {
-  padding: 10px;
-  margin: 15px;
+  padding: 5px;
+  margin: 24px;
   background-color: rgb(223, 136, 124);
   border-radius: 6px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 h2 {
@@ -48,12 +63,12 @@ h2 {
   font-family: "Oswald", sans-serif;
 }
 
-/* main p {
+main p {
   margin: 12px;
-  color: rgb(71, 29, 22;
-} */
+  font-family: "Noto Serif KR", sans-serif;
+  color: rgb(71, 29, 22);
+}
 
 .highlight {
-  margin: 12px;
   background-color: rgb(224, 110, 110);
 }
