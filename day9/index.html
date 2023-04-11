@@ -9,27 +9,32 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600&family=Oswald:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
   </head>
   <body>
     <header>
       <h1>HTML & CSS 기초 요약</h1>
-      <img src="html-css.png" alt="HTML and CSS logos" />
+      <img src="images/html-css.png" alt="HTML and CSS logos" />
     </header>
     <main>
       <h2>HTML 요약</h2>
       <p>HTML 어쩌고저쩌고</p>
-      <ul>
-        <li>어쩌구</li>
-        <li><a href="https://namu.wiki/w/HTML">저쩌구</a></li>
+      <ul id="html-css">
+        <li class="extra-important">어쩌구</li>
+        <li>저쩌구<a href="https://namu.wiki/w/HTML">링크</a></li>
       </ul>
       <h2>CSS 요약</h2>
       <p>CSS 어쩌고저쩌고</p>
-      <ul>
-        <li>어쩌구</li>
-        <li>저쩌구</li>
+      <ul id="css-lst">
+        <li>어<span class="highlight">쩌구</span></li>
+        <li class="extra-important">저쩌구</li>
       </ul>
     </main>
-    <footer></footer>
+    <footer>
+      <a href="pdfs/html-css-basics-summary.pdf" class="button" target="_blank"
+        >PDF 요약 다운로드</a
+      >
+      <p>(주)세은</p>
+    </footer>
   </body>
 </html>
