@@ -48,19 +48,36 @@
   background-color: rgb(255, 230, 0);
 }
 
+#highlights {
+  padding: 20px;
+  background: linear-gradient(0deg, rgb(227, 255, 253), rgb(185, 233, 241));
+}
+
+#highlights h2 {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 40px;
+  color: rgb(83, 83, 83);
+  margin: 24px 0;
+}
+
 #destinations {
   display: flex;
+  justify-content: center;
   width: 90%;
   margin: auto;
   margin-bottom: 40px;
 }
 
 .destination {
-  margin: 20px;
+  margin: 0 20px;
 }
 
 .destination p {
   text-align: center;
+  font-size: 24px;
+  color: rgb(151, 151, 151);
+  margin: 24px 0;
 }
 
 .destination img {
@@ -69,4 +86,8 @@
   box-shadow: 2px 4px 8px rgb(68, 67, 67);
   border-radius: 10px;
   object-fit: cover;
+}
+
+.destination strong {
+  color: rgb(36, 133, 65);
 }
