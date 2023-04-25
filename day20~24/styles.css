@@ -21,6 +21,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  display: none;
 }
 
 .menu-btn span {
@@ -63,9 +64,22 @@ a {
   width: 100%;
   height: 100%;
   background-color: rgb(29, 26, 27);
-  /* position: fixed;
+  position: fixed;
   top: 0;
-  left: 0; */
+  left: 0;
+  display: none;
+}
+
+#side-drawer:target {
+  display: block;
+}
+
+#side-drawer header {
+  height: 5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 5%;
 }
 
 #side-drawer ul {
@@ -126,7 +140,8 @@ main h1 {
 /* padding의 경우, %은 부모요소의 너비 참조, em은 폰트 사이즈 참조,
 rem은 실제로 만지고 있는 결과물 폰트 크기와 상관없이 최상위요소(html)를 참조. 없으면 사용자설정에 맞춰짐.*/
 
-h2 {
+.food-item h2 {
+  margin: 0 0 1rem 0;
   font-size: 2rem;
 }
 /*
@@ -148,6 +163,10 @@ rem은 항상 최상위요소(html)를 참조. 없으면 사용자설정에 맞�
 @media (max-width: 48rem) {
   #main-header nav a {
     display: none;
+  }
+
+  .menu-btn {
+    display: flex;
   }
 
   main h1 {
