@@ -4,11 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HTML 입력 요소 만들기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Oswald:wght@500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <form action="/" method="post">
-      <input type="text" name="user-name" />
+    <form action="/" method="GET">
+      <label for="username">이름</label>
+      <input type="text" name="user-name" id="username" />
+      <label for="useremail">주소</label>
+      <input type="email" name="user-email" id="useremail" />
+      <label for="userage">나이</label>
+      <input type="number" step="1" name="user-age" id="userage" />
+      <label for="userpassword">비밀번호</label>
+      <input type="password" step="1" name="user-password" id="userpassword" />
+      <label for="userbirthday">생일</label>
+      <input type="date" step="1" name="user-birthday" id="userbirthday" />
+      <hr />
+      <h2>계정 확인</h2>
+      <input
+        type="radio"
+        name="verify-text-message"
+        id="verify-text-message"
+        value="text-message"
+      />
+      <label for="verify-text-message">문자로 확인하기</label>
+      <input type="radio" name="verify-phone" id="verify-phone" value="phone" />
+      <label for="verify-phone">전화로 확인하기</label>
+      <input type="radio" name="verify-email" id="verify-email" value="email" />
+      <label for="verify-email">이메일로 확인하기</label>
       <button>입력</button>
     </form>
   </body>

@@ -1,14 +1,49 @@
 body {
   background-color: rgb(32, 32, 32);
-  margin: 8rem;
+  font-family: "Noto Serif KR", sans-serif;
+}
+
+form {
+  width: 30rem;
+  margin: 3rem auto;
+  background-color: rgb(255, 255, 255);
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+label {
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
 input {
-  width: 20rem;
+  width: 100%;
   display: block;
   margin-bottom: 1rem;
+  box-sizing: border-box;
+  font: inherit;
+  border: 1px solid rgb(0, 0, 0);
+  padding: 0.25rem;
+  color: rgb(67, 65, 65);
+}
+
+input:focus {
+  background-color: rgb(180, 206, 255);
+  color: rgb(8, 44, 75);
 }
 
 button {
   display: block;
+  font: inherit;
+  background-color: rgb(8, 44, 75);
+  color: white;
+  border: 1px solid rgb(8, 44, 75);
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(14, 23, 41);
+  border-color: rgb(14, 23, 41);
 }
