@@ -13,31 +13,132 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <form action="/" method="GET">
-      <label for="username">이름</label>
-      <input type="text" name="user-name" id="username" />
-      <label for="useremail">주소</label>
-      <input type="email" name="user-email" id="useremail" />
-      <label for="userage">나이</label>
-      <input type="number" step="1" name="user-age" id="userage" />
-      <label for="userpassword">비밀번호</label>
-      <input type="password" step="1" name="user-password" id="userpassword" />
-      <label for="userbirthday">생일</label>
-      <input type="date" step="1" name="user-birthday" id="userbirthday" />
-      <hr />
-      <h2>계정 확인</h2>
-      <input
-        type="radio"
-        name="verify-text-message"
-        id="verify-text-message"
-        value="text-message"
-      />
-      <label for="verify-text-message">문자로 확인하기</label>
-      <input type="radio" name="verify-phone" id="verify-phone" value="phone" />
-      <label for="verify-phone">전화로 확인하기</label>
-      <input type="radio" name="verify-email" id="verify-email" value="email" />
-      <label for="verify-email">이메일로 확인하기</label>
-      <button>입력</button>
-    </form>
+    <header>
+      <h1>데모 폼</h1>
+    </header>
+    <main>
+      <form action="/day26/index.html" method="GET">
+        <section>
+          <h2>개인정보</h2>
+          <ul>
+            <li>
+              <label for="username">이름</label>
+              <input type="text" name="user-name" id="username" />
+            </li>
+            <li>
+              <label for="useremail">이메일</label>
+              <input type="email" name="user-email" id="useremail" />
+            </li>
+            <li>
+              <label for="userpassword">비밀번호</label>
+              <input
+                type="password"
+                step="1"
+                name="user-password"
+                id="userpassword"
+              />
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>상세정보</h2>
+          <ul>
+            <li>
+              <label for="userage">나이</label>
+              <input type="number" step="1" name="user-age" id="userage" />
+            </li>
+            <li>
+              <label for="userbirthday">생일</label>
+              <input
+                type="date"
+                step="1"
+                name="user-birthday"
+                id="userbirthday"
+              />
+            </li>
+            <li>
+              <label for="favorite-color">가장 좋아하는 색은?</label>
+              <select id="favorite-color" name="favorite-color">
+                <option value="red">빨강입니다</option>
+                <option value="blue">파랑입니다</option>
+                <option value="black">검정입니다</option>
+              </select>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <label for="usermessage">메시지</label>
+          <textarea id="usermessage" name="user-message"></textarea>
+        </section>
+
+        <section>
+          <h2>계정 확인</h2>
+          <ul>
+            <li class="form-control-inline">
+              <input
+                type="radio"
+                name="verify-text-message"
+                id="verify-text-message"
+                value="text-message"
+              />
+              <label for="verify-text-message">문자로 확인하기</label>
+            </li>
+            <li class="form-control-inline">
+              <input
+                type="radio"
+                name="verify-phone"
+                id="verify-phone"
+                value="phone"
+              />
+              <label for="verify-phone">전화로 확인하기</label>
+            </li>
+            <li class="form-control-inline">
+              <input
+                type="radio"
+                name="verify-email"
+                id="verify-email"
+                value="email"
+              />
+              <label for="verify-email">이메일로 확인하기</label>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>연락처</h2>
+          <ul>
+            <li class="form-control-inline">
+              <input
+                type="checkbox"
+                id="contact-email"
+                name="contact"
+                value="email"
+              />
+              <label for="contact-email">이메일 연락</label>
+            </li>
+            <li class="form-control-inline">
+              <input
+                type="checkbox"
+                id="contact-phone"
+                name="contact"
+                value="phone"
+              />
+              <label for="contact-phone">전화로 연락</label>
+            </li>
+          </ul>
+        </section>
+        <hr />
+        <section>
+          <li class="form-control-inline">
+            <input type="checkbox" id="agree-terms" name="terms" />
+            <label for="agree-terms">이용약관 동의</label>
+          </li>
+        </section>
+
+        <section>
+          <button type="reset">초기화</button>
+          <button type="submit">입력</button>
+        </section>
+      </form>
+    </main>
   </body>
 </html>
