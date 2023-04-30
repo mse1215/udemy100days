@@ -23,11 +23,17 @@
           <ul>
             <li>
               <label for="username">이름</label>
-              <input type="text" name="user-name" id="username" />
+              <input
+                type="text"
+                name="user-name"
+                id="username"
+                required
+                placeholder="홍 길동"
+              />
             </li>
             <li>
               <label for="useremail">이메일</label>
-              <input type="email" name="user-email" id="useremail" />
+              <input type="email" name="user-email" id="useremail" required />
             </li>
             <li>
               <label for="userpassword">비밀번호</label>
@@ -36,6 +42,8 @@
                 step="1"
                 name="user-password"
                 id="userpassword"
+                required
+                minlength="7"
               />
             </li>
           </ul>
@@ -44,8 +52,16 @@
           <h2>상세정보</h2>
           <ul>
             <li>
-              <label for="userage">나이</label>
-              <input type="number" step="1" name="user-age" id="userage" />
+              <label for="userage">나이(18~100)</label>
+              <input
+                type="number"
+                step="1"
+                name="user-age"
+                id="userage"
+                required
+                min="18"
+                max="100"
+              />
             </li>
             <li>
               <label for="userbirthday">생일</label>
@@ -54,6 +70,9 @@
                 step="1"
                 name="user-birthday"
                 id="userbirthday"
+                required
+                min="1921-01-01"
+                max="2003-01-01"
               />
             </li>
             <li>
@@ -68,7 +87,7 @@
         </section>
         <section>
           <label for="usermessage">메시지</label>
-          <textarea id="usermessage" name="user-message"></textarea>
+          <textarea id="usermessage" name="user-message" rows="8"></textarea>
         </section>
 
         <section>
