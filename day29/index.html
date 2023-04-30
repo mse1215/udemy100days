@@ -22,67 +22,79 @@
           <h2>문의사항 보내기</h2>
           <ul>
             <li>
-                <label for="username">이름</label>
-                <input
-                  type="text"
-                  name="user-name"
-                  id="username"
-                  required
-                  placeholder="홍 길동"
-                />
-              </li>
-              <li>
-                <label for="email">이메일</label>
-                <input type="email" name="email" id="email" required />
-              </li>
-              <li>
-                <label for="rphone">연락처</label>
-                <input type="tel" name="phone" id="phone" required minlength="9"/>
-              </li>
-              <li>
-                <label for="message">문의사항</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="6"
-                  required
-                  minlength="4"
-                  maxlength="200"
-                ></textarea>
-                </li>
-          </ul>        
+              <label for="username">이름</label>
+              <input
+                type="text"
+                name="user-name"
+                id="username"
+                required
+                placeholder="홍 길동"
+              />
+            </li>
+            <li>
+              <label for="email">이메일</label>
+              <input type="email" name="email" id="email" required />
+            </li>
+            <li>
+              <label for="rphone">연락처</label>
+              <input
+                type="tel"
+                name="phone"
+                id="phone"
+                required
+                minlength="9"
+              />
+            </li>
+            <li>
+              <label for="message">문의사항</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                required
+                minlength="4"
+                maxlength="200"
+              ></textarea>
+            </li>
+          </ul>
         </section>
         <section>
-            <label for="channel">알게 된 경로는?</label>
-            <select id="channel" name="channel" required>
-              <option value="search">인터넷 검색을 통해</option>
-              <option value="recommend">지인 추천을 통해</option>
-              <option value="other">기타</option>
+          <label for="channel">알게 된 경로는?</label>
+          <select id="channel" name="channel" required>
+            <option value="search">인터넷 검색을 통해</option>
+            <option value="recommend">지인 추천을 통해</option>
+            <option value="other">기타</option>
+          </select>
         </section>
         <section>
-            <h2>어디로 답변 드릴까요?</h2>
-            <ul>
-                <li class="inline-control">
-                    <input type="radio" name="reply-phone" value="phone" required>
-                    <label for="reply-phone">전화로</label>
-                </li>
-                <li class="inline-control">
-                    <input type="radio" name="reply-email" value="email" required>
-                    <label for="reply-email">이메일로</label>
-                </li>
-                <li class="inline-control">
-                    <input type="radio" name="reply-none" value="none" required>
-                    <label for="reply-none">답장 필요없음</label>
-                </li>
-            </ul>
+          <h2>어디로 답변 드릴까요?</h2>
+          <ul>
+            <li class="inline-control">
+              <input type="radio" name="reply-phone" value="phone" required />
+              <label for="reply-phone">전화로</label>
+            </li>
+            <li class="inline-control">
+              <input type="radio" name="reply-email" value="email" required />
+              <label for="reply-email">이메일로</label>
+            </li>
+            <li class="inline-control">
+              <input type="radio" name="reply-none" value="none" required />
+              <label for="reply-none">답장 필요없음</label>
+            </li>
+          </ul>
         </section>
-        <section>
-            <input type="checkbox" name="accept-terms" id="accept-terms" required>
-            <label for="accept-terms">이용약관 동의</label>
+        <section class="inline-control">
+          <input
+            type="checkbox"
+            name="accept-terms"
+            id="accept-terms"
+            required
+          />
+          <label for="accept-terms">이용약관 동의</label>
         </section>
         <section id="form-actions">
-            <button type="reset" class="btn-empty">초기화</button>
-            <button type="submit" class="btn-filled">제출하기</button>
+          <button type="reset" class="btn-empty">초기화</button>
+          <button type="submit" class="btn-filled">제출하기</button>
         </section>
       </form>
     </main>
