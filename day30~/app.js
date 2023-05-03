@@ -19,3 +19,12 @@ alert(totalAdultYears);
 age = 45;
 totalAdultYears = calaulateAdultYears(age);
 alert(totalAdultYears);
+
+let person = {
+  name: "세은",
+  greet() {
+    alert("안녕!");
+  },
+};
+
+person.greet();
