@@ -14,16 +14,16 @@ function calaulateAdultYears(userAge) {
 }
 
 totalAdultYears = calaulateAdultYears(age);
-alert(totalAdultYears);
+console.log(totalAdultYears);
 
 age = 45;
 totalAdultYears = calaulateAdultYears(age);
-alert(totalAdultYears);
+console.log(totalAdultYears);
 
 let person = {
   name: "세은",
   greet() {
-    alert("안녕!");
+    console.log("안녕!");
   },
 };
 
