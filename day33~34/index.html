@@ -5,13 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Advanced JavaScript - DOM</title>
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
+    <!-- defer : Boolean 속성. 전체 문서가 분석될 때까지 스크립트 실행 지연 -->
   </head>
   <body>
-    <h1>Hi there!</h1>
-    <p>
+    <h1 id="first-title">Hi there!</h1>
+    <p>I'm new!</p>
+    <p class="highlighted-p">
       This is a
-      <a href="#">link</a>
+      <a id="external-link" href="#">link</a>
     </p>
   </body>
 </html>
