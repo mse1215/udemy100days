@@ -1,25 +1,20 @@
-// document.body.children[1].children[0].href = "http://google.com";
-// alert(window);
-// window.alert(); -> 두 코드는 같은 말임.
+let paragraphElement = document.querySelector("p");
 
-let anchorElement = document.getElementById("external-link");
-anchorElement.href = "http://google.com";
+function changeParaghraphText() {
+  paragraphElement.textContent = "Clicked!";
+  console.log("Paragraph clicked!");
+}
 
-anchorElement = document.querySelector("p a");
-anchorElement.href =
-  "https://www.udemy.com/courses/development/web-development/";
+paragraphElement.addEventListener("click", changeParaghraphText);
 
-//요소 추가하기
-//1. 요소 만들기
+let inputElement = document.querySelector("input");
 
-let newAnchorElement = document.createElement("a");
-newAnchorElement.href = "http://google.com";
-newAnchorElement.textContent = "구글 연결";
+function retrieveUserInput(event) {
+  //let enteredText = inputElement.value;
+  //let enteredText = event.target.value;
+  let enteredText = event.data;
+  console.log(enteredText);
+  //console.log(event);
+}
 
-//2. 부모 요소에 접근하기
-
-let firstPharagraph = document.querySelector("p");
-
-//3. 새로운 요소 넣기
-
-firstPharagraph.appendChild(newAnchorElement);
+inputElement.addEventListener("input", retrieveUserInput);
