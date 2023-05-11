@@ -5,16 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>틱택토</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles/styles.css" />
+
     <script src=""></script>
   </head>
   <body>
-    <header>
+    <header id="main-header">
       <h1>틱택토</h1>
       <p>HTMNL, CSS, JavaScript를 응용해서 틱택토 만들기</p>
     </header>
     <main>
       <aside>
+        <header></header>
         <h2>이름을 선택해주세요</h2>
         <form>
           <div>
@@ -22,8 +30,8 @@
             <input type="text" name="playername" id="playername" />
           </div>
           <div>
-            <button type="button"></button>
-            <button type="submit">확인</button>
+            <button type="button" class="btn btn-alt">취소</button>
+            <button type="submit" class="btn">확인</button>
           </div>
         </form>
       </aside>
@@ -34,7 +42,7 @@
               <h2>플레이어 1</h2>
               <h3>플레이어 이름</h3>
               <p>X</p>
-              <button>수정하기</button>
+              <button class="btn btn-alt">수정하기</button>
             </article>
           </li>
           <li>
@@ -42,13 +50,23 @@
               <h2>플레이어 2</h2>
               <h3>플레이어 이름</h3>
               <p>O</p>
-              <button>수정하기</button>
+              <button class="btn btn-alt">수정하기</button>
             </article>
           </li>
         </ol>
-        <button>게임 시작하기</button>
+        <button class="btn btn-alt">게임 시작하기</button>
       </section>
       <section id="active game">
+        <article>
+          <h3>
+            당신이 이겼습니다, <span id="winner-name">플레이어 이름</span>!
+          </h3>
+          <p>'새로운 게임'을 누르세요.</p>
+        </article>
+
+        <p>
+          당신 차례입니다.<span id="active-palyer-name">플레이어 이름</span>
+        </p>
         <ol>
           <li></li>
           <li></li>
