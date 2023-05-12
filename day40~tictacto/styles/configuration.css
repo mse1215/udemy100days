@@ -62,12 +62,3 @@
   font-family: bold;
   color: rgb(47, 4, 82);
 }
-
-#game-board {
-  list-style: none;
-  margin: 1rem 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 6rem);
-  /* = 6rem 6rem 6rem; */
-}

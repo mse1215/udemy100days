@@ -25,3 +25,37 @@
   font-weight: bold;
   color: rgb(50, 5, 87);
 }
+
+#game-board {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 6rem);
+  /* = 6rem 6rem 6rem; (3개 열 추가)*/
+  grid-template-rows: repeat(3, 6rem);
+  /* = 6rem 6rem 6rem; (3개 행 추가)*/
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+#game-board li {
+  background-color: rgb(215, 187, 247);
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+#game-board li:hover {
+  background-color: rgb(112, 13, 204);
+}
+
+#game-board li:disabled {
+  background-color: rgb(112, 13, 204);
+  color: white;
+  cursor: default;
+}
