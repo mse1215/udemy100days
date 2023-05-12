@@ -12,20 +12,23 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/overlays.css" />
+    <link rel="stylesheet" href="styles/configuration.css" />
+    <link rel="stylesheet" href="styles/game.css" />
 
     <script src=""></script>
   </head>
   <body>
+    <div id="backdrop"></div>
     <header id="main-header">
       <h1>틱택토</h1>
       <p>HTMNL, CSS, JavaScript를 응용해서 틱택토 만들기</p>
     </header>
     <main>
-      <aside>
-        <header></header>
+      <aside class="modal" id="config-overlay">
         <h2>이름을 선택해주세요</h2>
         <form>
-          <div>
+          <div class="form-control">
             <label for="playername">플레이어 이름</label>
             <input type="text" name="playername" id="playername" />
           </div>
@@ -35,13 +38,13 @@
           </div>
         </form>
       </aside>
-      <section id="game=configuration">
+      <section id="game-configuration">
         <ol>
           <li>
             <article>
               <h2>플레이어 1</h2>
               <h3>플레이어 이름</h3>
-              <p>X</p>
+              <p class="player-symbol">X</p>
               <button class="btn btn-alt">수정하기</button>
             </article>
           </li>
@@ -49,15 +52,15 @@
             <article>
               <h2>플레이어 2</h2>
               <h3>플레이어 이름</h3>
-              <p>O</p>
+              <p class="player-symbol">O</p>
               <button class="btn btn-alt">수정하기</button>
             </article>
           </li>
         </ol>
         <button class="btn btn-alt">게임 시작하기</button>
       </section>
-      <section id="active game">
-        <article>
+      <section id="active-game">
+        <article id="game-over">
           <h3>
             당신이 이겼습니다, <span id="winner-name">플레이어 이름</span>!
           </h3>
@@ -67,7 +70,7 @@
         <p>
           당신 차례입니다.<span id="active-palyer-name">플레이어 이름</span>
         </p>
-        <ol>
+        <ol id="game-board">
           <li></li>
           <li></li>
           <li></li>
