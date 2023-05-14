@@ -76,8 +76,9 @@
             </article>
           </li>
         </ol>
-        <button class="btn">게임 시작하기</button>
+        <button class="btn" id="start-game-btn">게임 시작하기</button>
       </section>
+
       <section id="active-game">
         <article id="game-over">
           <h3>
@@ -89,18 +90,19 @@
         <p>
           당신 차례입니다.<span id="active-palyer-name">플레이어 이름</span>
         </p>
+
         <ol id="game-board">
-          <li></li>
-          <li></li>
-          <li></li>
+          <li data-col="1" data-row="1"></li>
+          <li data-col="2" data-row="1"></li>
+          <li data-col="3" data-row="1"></li>
 
-          <li></li>
-          <li></li>
-          <li></li>
+          <li data-col="1" data-row="2"></li>
+          <li data-col="2" data-row="2"></li>
+          <li data-col="3" data-row="2"></li>
 
-          <li></li>
-          <li></li>
-          <li></li>
+          <li data-col="1" data-row="3"></li>
+          <li data-col="2" data-row="3"></li>
+          <li data-col="3" data-row="3"></li>
         </ol>
       </section>
     </main>
