@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>틱택토</title>
+    <title>Tic Tac Toe</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,14 +18,12 @@
     <script src="scripts/config.js" defer></script>
     <script src="scripts/game.js" defer></script>
     <script src="scripts/app.js" defer></script>
-
-    <script src=""></script>
   </head>
   <body>
     <div id="backdrop"></div>
     <header id="main-header">
       <h1>틱택토</h1>
-      <p>HTMNL, CSS, JavaScript를 응용해서 틱택토 만들기</p>
+      <p>HTML, CSS, JavaScript를 응용해서 틱택토 만들기</p>
     </header>
     <main>
       <aside class="modal" id="config-overlay">
@@ -38,7 +36,7 @@
           </div>
           <p id="config-errors"></p>
           <div>
-            <button type="reset" class="btn btn-alt" id="cancel-Config-Btn">
+            <button type="reset" class="btn btn-alt" id="cancel-config-btn">
               취소
             </button>
             <button type="submit" class="btn">확인</button>
@@ -84,13 +82,12 @@
           <h2>
             당신이 이겼습니다, <span id="winner-name">플레이어 이름</span>!
           </h2>
-          <p>'새로운 게임'을 누르세요.</p>
+          <p>'새로운 게임'을 누르면 새로 시작할 수 있습니다.</p>
         </article>
 
         <p>
-          당신 차례입니다.<span id="active-palyer-name">플레이어 이름</span>
+          당신 차례입니다.<span id="active-player-name">플레이어 이름</span>!
         </p>
-
         <ol id="game-board">
           <li data-col="1" data-row="1"></li>
           <li data-col="2" data-row="1"></li>

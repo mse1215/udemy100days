@@ -6,6 +6,7 @@ const gameData = [
 
 let editedPlayer = 0;
 let activePlayer = 0;
+let currentRound = 1;
 
 const players = [
   {
@@ -21,16 +22,16 @@ const players = [
 const playerConfigOverlayElement = document.getElementById("config-overlay");
 const backdropElement = document.getElementById("backdrop");
 const formElement = document.querySelector("form");
-const errorOutputElement = document.getElementById("config-errors");
+const errorsOutputElement = document.getElementById("config-errors");
 const gameAreaElement = document.getElementById("active-game");
-const activePlayerNameElement = document.getElementById("active-palyer-name");
+const activePlayerNameElement = document.getElementById("active-player-name");
 
 const editPlayer1BtnElement = document.getElementById("edit-player-1-btn");
 const editPlayer2BtnElement = document.getElementById("edit-player-2-btn");
-const cancelConfigBtnElement = document.getElementById("cancelConfigBtn");
+const cancelConfigBtnElement = document.getElementById("cancel-config-btn");
 const startNewGameBtnElement = document.getElementById("start-game-btn");
-// const gameFieldElements = document.querySelectorAll("#game-board li");
-const gameBoardElement = document.querySelectorAll("game-board");
+// const gameFieldElements = document.querySelectorAll('#game-board li');
+const gameBoardElement = document.getElementById("game-board");
 
 editPlayer1BtnElement.addEventListener("click", openPlayerConfig);
 editPlayer2BtnElement.addEventListener("click", openPlayerConfig);
@@ -48,3 +49,4 @@ startNewGameBtnElement.addEventListener("click", startNewGame);
 
 gameBoardElement.addEventListener("click", selectGameField);
 // 문제있음. app.js:49 Uncaught TypeError: gameBoardElement.addEventListener is not a function. at app.js:49:18
+//-> 오타였음. 오타.. 그만....

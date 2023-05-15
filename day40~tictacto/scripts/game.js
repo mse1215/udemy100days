@@ -13,7 +13,7 @@ function switchPlayer() {
   } else {
     activePlayer = 0;
   }
-  activePlayerNameElement.textContent = players[activePlayer];
+  activePlayerNameElement.textContent = players[activePlayer].name;
 }
 
 function selectGameField(event) {
@@ -38,6 +38,7 @@ function selectGameField(event) {
   const winnerId = checkforGameOver();
   console.log(winnerId);
 
+  currentRound++;
   switchPlayer();
 }
 
@@ -99,5 +100,9 @@ function checkforGameOver() {
     gameData[1][1] === gameData[0][2]
   ) {
     return gameData[2][0];
+  }
+
+  if (currentRound === 9) {
+    return -1; // 무승부. -1이 왜 무승부인데요...
   }
 }
