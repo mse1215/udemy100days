@@ -1,8 +1,31 @@
+function resetGameStatus() {
+  activePlayer = 0;
+  currentRound = 1;
+  gameIsOver = false;
+  gameOverElement.firstElementChild.innerHTML =
+    '당신이 이겼습니다, <span id="winner-name">플레이어 이름</span>!';
+  gameOverElement.style.display = "none";
+
+  let gameBoardIndex = 0;
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      gameData[i][j] = 0;
+      const gameBoardItemElement = gameBoardElement.children[gameBoardIndex];
+      gameBoardItemElement.textContent = "";
+      gameBoardItemElement.classList.remove("disabled");
+      gameBoardIndex++;
+    }
+  }
+}
+
 function startNewGame() {
   if (players[0].name === "" || players[1].name === "") {
     alert("플레이어의 이름을 모두 입력해주세요");
     return;
   }
+
+  resetGameStatus();
+
   activePlayerNameElement.textContent = players[activePlayer].name;
   gameAreaElement.style.display = "block";
 }
@@ -17,7 +40,7 @@ function switchPlayer() {
 }
 
 function selectGameField(event) {
-  if (event.target.tagName !== "LI") {
+  if (event.target.tagName !== "LI" || gameIsOver) {
     return;
   }
 
@@ -36,7 +59,10 @@ function selectGameField(event) {
   gameData[selectedRow][selectedColumn] = activePlayer + 1;
 
   const winnerId = checkforGameOver();
-  console.log(winnerId);
+
+  if (winnerId !== 0) {
+    endGame(winnerId);
+  }
 
   currentRound++;
   switchPlayer();
@@ -104,5 +130,19 @@ function checkforGameOver() {
 
   if (currentRound === 9) {
     return -1; // 무승부. -1이 왜 무승부인데요...
+  }
+  return 0;
+}
+
+function endGame(winnerId) {
+  gameIsOver = true;
+  gameOverElement.style.display = "block";
+
+  if (winnerId > 0) {
+    const winnerName = players[winnerId - 1].name;
+    gameOverElement.firstElementChild.firstElementChild.textContent =
+      winnerName;
+  } else {
+    gameOverElement.firstElementChild.textContent = "무승부입니다!";
   }
 }
