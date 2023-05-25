@@ -27,7 +27,7 @@ app.post("/recommend", function (req, res) {
   const fileData = fs.readFileSync(filePath);
   const storedRestaurants = JSON.parse(fileData);
   storedRestaurants.push(restaurant);
-  fs.writeFileSync(fileData, JSON.stringify(storedRestaurants));
+  fs.writeFileSync(filePath, JSON.stringify(storedRestaurants));
 
   res.redirect("/confirm");
 });
@@ -44,6 +44,3 @@ app.get("/about", function (req, res) {
 
 app.listen(3000);
 //listen: 특정 포트에서 들어오는 네트워크 트래픽에 대해 들어오는 요청의 수신 가능.
-
-//오류 발생
-//SyntaxError: Unexpected end of JSON input
