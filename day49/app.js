@@ -2,6 +2,8 @@ const fs = require("fs");
 const path = require("path");
 
 const express = require("express");
+const uuid = require("uuid");
+
 const app = express();
 
 app.set("views", path.join(__dirname, "views"));
@@ -27,11 +29,18 @@ app.get("/restaurants", function (req, res) {
   });
 });
 
+app.get("/restaurants/:id", function (req, res) {
+  // /restaurants/r1
+  const restaurantID = req.params.id;
+  res.render("restaurant-detail", { rid: restaurantID });
+});
+
 app.get("/recommend", function (req, res) {
   res.render("recommend");
 });
 app.post("/recommend", function (req, res) {
   const restaurant = req.body;
+  restaurant.id = uuid.v4();
   const filePath = path.join(__dirname, "data", "restaurants.json");
 
   const fileData = fs.readFileSync(filePath);
@@ -51,6 +60,9 @@ app.get("/confirm", function (req, res) {
 app.get("/about", function (req, res) {
   res.render("about");
 });
+
+app.get("/restaurant1");
+app.get("/restaurant2");
 
 app.listen(3000);
 //listen: 특정 포트에서 들어오는 네트워크 트래픽에 대해 들어오는 요청의 수신 가능.
