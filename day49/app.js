@@ -32,7 +32,17 @@ app.get("/restaurants", function (req, res) {
 app.get("/restaurants/:id", function (req, res) {
   // /restaurants/r1
   const restaurantID = req.params.id;
-  res.render("restaurant-detail", { rid: restaurantID });
+  const filePath = path.join(__dirname, "data", "restaurants.json");
+
+  const fileData = fs.readFileSync(filePath);
+  const storedRestaurants = JSON.parse(fileData);
+
+  for (const restaurant of storedRestaurants) {
+    if (restaurant.id === restaurantID) {
+      return res.render("restaurant-detail", { restaurant: restaurant });
+    }
+  }
+  res.render("404");
 });
 
 app.get("/recommend", function (req, res) {
@@ -61,8 +71,9 @@ app.get("/about", function (req, res) {
   res.render("about");
 });
 
-app.get("/restaurant1");
-app.get("/restaurant2");
+app.use(function (req, res) {
+  res.render("404");
+});
 
 app.listen(3000);
 //listen: 특정 포트에서 들어오는 네트워크 트래픽에 대해 들어오는 요청의 수신 가능.
