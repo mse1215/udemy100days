@@ -1,11 +1,8 @@
-const fs = require("fs");
 const path = require("path");
 
 const express = require("express");
-const uuid = require("uuid");
 
-const resData = require("./util/restaurant-data");
-const defaultRoutes = require("./routes/defalut");
+const defaultRoutes = require("./routes/default");
 const restaurantRoutes = require("./routes/restaurants");
 
 const app = express();
@@ -17,14 +14,14 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/", defaultRoutes);
-app.use("/restaurants", restaurantRoutes);
+app.use("/", restaurantRoutes);
 
 app.use(function (req, res) {
-  res.status(404).render("404");
+  res.render("404");
 });
 
 app.use(function (error, req, res, next) {
-  res.status(500).res.render("500");
+  res.render("500");
 });
 
 app.listen(3000);
