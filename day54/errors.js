@@ -7,8 +7,8 @@ function readFile() {
   } catch {
     console.log("에러 발생");
   }
+  console.log(fileData);
+  console.log("안녕");
 }
-console.log(fileData);
-console.log("안녕");
 
 readFile();
