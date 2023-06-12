@@ -6,6 +6,5 @@ const pool = mysql.createPool({
   user: "root",
   password: "<your-pw>",
 });
-// 연결 풀 생성
-
+// 연결 풀 생성.
 module.exports = pool;
