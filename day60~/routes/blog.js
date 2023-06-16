@@ -36,4 +36,30 @@ router.post("/posts", async function (req, res) {
   res.redirect("/posts");
 });
 
+router.get("/posts/:id", async function (req, res) {
+  const query = `
+    SELECT posts.*, authors.name AS author_name, authors.email AS author_email FROM posts
+    INNER JOIN authors ON posts.author_id = authors.id
+    WHERE posts.id = ?
+  `;
+  const [posts] = await db.query(query, [req.params.id]);
+  if (!posts || posts.length === 0) {
+    return res.status(404).render("404");
+  }
+
+  const postData = {
+    ...posts[0],
+    date: posts[0].date.toISOString(),
+    humanReadableDate: posts[0].date.toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+  };
+
+  res.render("post-detail", { post: postData });
+});
+//라우트가 로드된 경로에서 해당 ID 자리 표시자의 구체적인 값을 추출하는 방법. ? 가 1개라서 배열 []도 1개.
+
 module.exports = router;
