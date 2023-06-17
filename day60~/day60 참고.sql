@@ -4,3 +4,6 @@ values ('Honghong','hong@test.com')
 
 select * from blog.authors
 -> 기본 검색(확인)
+
+2023. 06. 18
+MySQL 데이터 사라짐. 확인 필요.
