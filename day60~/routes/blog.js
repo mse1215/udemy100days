@@ -42,7 +42,7 @@ router.get("/posts/:id", async function (req, res) {
     INNER JOIN authors ON posts.author_id = authors.id
     WHERE posts.id = ?
   `;
-  const [posts] = await db.query(query, [req.params.id]);
+  const [posts] = await db.query(query, [req.params.id]); //라우트가 로드된 경로에서 해당 ID 자리 표시자의 구체적인 값을 추출하는 방법. ? 가 1개라서 배열 []도 1개.
   if (!posts || posts.length === 0) {
     return res.status(404).render("404");
   }
@@ -60,6 +60,39 @@ router.get("/posts/:id", async function (req, res) {
 
   res.render("post-detail", { post: postData });
 });
-//라우트가 로드된 경로에서 해당 ID 자리 표시자의 구체적인 값을 추출하는 방법. ? 가 1개라서 배열 []도 1개.
+
+router.get("/posts/:id/edit", async function (req, res) {
+  const query = `
+  SELECT * FROM posts WHERE id = ?
+  `;
+  const [posts] = await db.query(query, [req.params.id]); //db.query를 실행하고 (query)를 전달함. 데이터에서 이 특정 게시물을 제공할 URL에서 얻은 ID임.
+
+  if (!posts || posts.length === 0) {
+    return res.status(404).render("404");
+  }
+
+  res.render("update-post", { post: posts[0] });
+});
+
+router.post("/posts/:id/edit", async function (req, res) {
+  const query = `
+  UPDATE posts SET title = ? summary = ?, body = ?
+  WHERE id = ?
+  `;
+
+  await db.query(query, [
+    req.body.title,
+    req.body.summary,
+    req.body.content,
+    req.body.params.id,
+  ]);
+
+  res.redirect("/posts");
+});
+
+router.post("/posts/:id/delete", async function (req, res) {
+  db.query("DELETE FROM posts WHERE id = ?", [req.params.id]);
+  res.redirect("/posts");
+});
 
 module.exports = router;
