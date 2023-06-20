@@ -1,0 +1,82 @@
+test> use ratingportal
+switched to db ratingportal
+ratingportal> db.restaurants.find()
+[
+  {
+    _id: ObjectId("6490680d910d4f95eb655607"),
+    name: 'TasteGood',
+    address: { street: 'Some Street 5', streetNumber: '23b' }
+  },
+  {
+    _id: ObjectId("64906870910d4f95eb655608"),
+    name: 'BurgerHouse',
+    address: { street: 'Another Street 5', streetNumber: '15' }
+  }
+]
+ratingportal> db.restaurants.find({name: "TasteGood"})
+[
+  {
+    _id: ObjectId("6490680d910d4f95eb655607"),
+    name: 'TasteGood',
+    address: { street: 'Some Street 5', streetNumber: '23b' }
+  }
+]
+
+ratingportal> db.restaurants.updateOne({_id: ObjectId("64906870910d4f95eb655608")}, {$set: { "address.street": "Some Street" } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+ratingportal> db.restaurants.find()
+[
+  {
+    _id: ObjectId("6490680d910d4f95eb655607"),
+    name: 'TasteGood',
+    address: { street: 'Some Street 5', streetNumber: '23b' }
+  },
+  {
+    _id: ObjectId("64906870910d4f95eb655608"),
+    name: 'BurgerHouse',
+    address: { street: 'Some Street', streetNumber: '15' }
+  }
+]
+
+
+* 삭제
+ratingportal> db.restaurants.deleteOne({_id: ObjectId("6490680d910d4f95eb655607")})
+{ acknowledged: true, deletedCount: 1 }
+ratingportal> db.restaurants.find()
+[
+  {
+    _id: ObjectId("64906870910d4f95eb655608"),
+    name: 'BurgerHouse',
+    address: { street: 'Some Street', streetNumber: '15' }
+  }
+]
+
+
+* 전체삭제
+ratingportal> db.restaurants.deleteMany({})
+{ acknowledged: true, deletedCount: 1 }
+
+* 하나 추가
+ratingportal> db.types.insertOne({name: "German"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6491b91ccc8c6cb769c02f4d")
+}
+
+*db 추가
+ratingportal> db.types.insertOne({name: "TasteGood", address: {street: "Foodstreet", streetNumber: "23b", postalCode: 80333, city: "Korea", country: "Seoul"}, type: {typeId: ObjectId("6491b91ccc8c6cb769c02f4d"), name: "German"}})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6491bab0cc8c6cb769c02f50")
+}
+ratingportal> db.types.insertOne({name: "BurgerHouse", address: {street: "Hamstreet", streetNumber: "12", postalCode: 10115, city: "Berlin", country: "Germany"}, type: {typeId: ObjectId("6491b92ecc8c6cb769c02f4f"), name: "American"}})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6491bbd2cc8c6cb769c02f51")
+}
