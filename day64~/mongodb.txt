@@ -80,3 +80,158 @@ ratingportal> db.types.insertOne({name: "BurgerHouse", address: {street: "Hamstr
   acknowledged: true,
   insertedId: ObjectId("6491bbd2cc8c6cb769c02f51")
 }
+
+ratingportal> db.restaurants.find()
+[
+  {
+    _id: ObjectId("6491bdb5cc8c6cb769c02f53"),
+    name: 'BurgerHouse',
+    address: {
+      street: 'Hamstreet',
+      streetNumber: '12',
+      postalCode: 10115,
+      city: 'Berlin',
+      country: 'Germany'
+    },
+    type: { typeId: ObjectId("6491b92ecc8c6cb769c02f4f"), name: 'American' }
+  },
+  {
+    _id: ObjectId("6491bef6cc8c6cb769c02f54"),
+    name: 'TasteGood',
+    address: {
+      street: 'FoodStreet',
+      streetNumber: '23b',
+      postalCode: 80333,
+      city: 'Korea',
+      country: 'Seoul'
+    },
+    type: { typeId: ObjectId("6491b91ccc8c6cb769c02f4d"), name: 'German' }
+  }
+]
+
+*리뷰 추가
+ratingportal> db.reviews.insertOne({reviewer: {firstname:"Sen", lastname:"Moon"}, rating: 3, text: "soso", date: new Date("2023-06-20"), restaurant: {id: ObjectId("6491bdb5cc8c6cb769c02f53"), name: "BurgerHouse"}})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6491c074cc8c6cb769c02f55")
+}
+*리뷰 확인
+ratingportal> db.reviews.find()
+[
+  {
+    _id: ObjectId("6491c074cc8c6cb769c02f55"),
+    reviewer: { firstname: 'Sen', lastname: 'Moon' },
+    rating: 3,
+    text: 'soso',
+    date: ISODate("2023-06-20T00:00:00.000Z"),
+    restaurant: { id: ObjectId("6491bdb5cc8c6cb769c02f53"), name: 'BurgerHouse' }
+  }
+]
+
+*리뷰 추가 및 확인
+ratingportal> db.reviews.insertOne({reviewer: {firstname:"Sen", lastname:"Moon"}, rating: 4, text: "goodgood", date: new Date("2023-06-20"), restaurant: {id: ObjectId("6491bef6cc8c6cb769c02f54"), name: "TasteGood"}})
+{
+  acknowledged: true,
+  insertedId: ObjectId("649301fd9207ad3f8ba65364")
+}
+ratingportal> db.reviews.find()
+[
+  {
+    _id: ObjectId("6491c074cc8c6cb769c02f55"),
+    reviewer: { firstname: 'Sen', lastname: 'Moon' },
+    rating: 3,
+    text: 'soso',
+    date: ISODate("2023-06-20T00:00:00.000Z"),
+    restaurant: { id: ObjectId("6491bdb5cc8c6cb769c02f53"), name: 'BurgerHouse' }
+  },
+  {
+    _id: ObjectId("649301fd9207ad3f8ba65364"),
+    reviewer: { firstname: 'Sen', lastname: 'Moon' },
+    rating: 4,
+    text: 'goodgood',
+    date: ISODate("2023-06-20T00:00:00.000Z"),
+    restaurant: { id: ObjectId("6491bef6cc8c6cb769c02f54"), name: 'TasteGood' }
+  }
+]
+
+find 조건
+$gt greater than
+$lt less than
+$gte greater than or equal
+$lte less than or equal
+
+ratingportal> db.reviews.find({rating: {$gt: 3}})
+[
+  {
+    _id: ObjectId("649301fd9207ad3f8ba65364"),
+    reviewer: { firstname: 'Sen', lastname: 'Moon' },
+    rating: 4,
+    text: 'goodgood',
+    date: ISODate("2023-06-20T00:00:00.000Z"),
+    restaurant: { id: ObjectId("6491bef6cc8c6cb769c02f54"), name: 'TasteGood' }
+  }
+]
+
+ratingportal> db.reviews.find({$and: [{rating: {$gte: 3}}, {rating:{$lte: 4}}] })
+[
+  {
+    _id: ObjectId("6491c074cc8c6cb769c02f55"),
+    reviewer: { firstname: 'Sen', lastname: 'Moon' },
+    rating: 3,
+    text: 'soso',
+    date: ISODate("2023-06-20T00:00:00.000Z"),
+    restaurant: { id: ObjectId("6491bdb5cc8c6cb769c02f53"), name: 'BurgerHouse' }
+  },
+  {
+    _id: ObjectId("649301fd9207ad3f8ba65364"),
+    reviewer: { firstname: 'Sen', lastname: 'Moon' },
+    rating: 4,
+    text: 'goodgood',
+    date: ISODate("2023-06-20T00:00:00.000Z"),
+    restaurant: { id: ObjectId("6491bef6cc8c6cb769c02f54"), name: 'TasteGood' }
+  }
+]
+
+*가게 주소 수정
+ratingportal> db.restaurants.updateOne({_id: ObjectId("6491bdb5cc8c6cb769c02f53")}, {$set: {"address.street": "ABCstreet"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+ratingportal> db.reviews.find()
+[
+  {
+    _id: ObjectId("6491c074cc8c6cb769c02f55"),
+    reviewer: { firstname: 'Sen', lastname: 'Moon' },
+    rating: 3,
+    text: 'soso',
+    date: ISODate("2023-06-20T00:00:00.000Z"),
+    restaurant: { id: ObjectId("6491bdb5cc8c6cb769c02f53"), name: 'BurgerHouse' }
+  },
+  {
+    _id: ObjectId("649301fd9207ad3f8ba65364"),
+    reviewer: { firstname: 'Sen', lastname: 'Moon' },
+    rating: 4,
+    text: 'goodgood',
+    date: ISODate("2023-06-20T00:00:00.000Z"),
+    restaurant: { id: ObjectId("6491bef6cc8c6cb769c02f54"), name: 'TasteGood' }
+  }
+]
+
+*리뷰 삭제
+ratingportal> db.reviews.deleteOne({_id: ObjectId("6491c074cc8c6cb769c02f55")})
+{ acknowledged: true, deletedCount: 1 }
+ratingportal> db.reviews.find()
+[
+  {
+    _id: ObjectId("649301fd9207ad3f8ba65364"),
+    reviewer: { firstname: 'Sen', lastname: 'Moon' },
+    rating: 4,
+    text: 'goodgood',
+    date: ISODate("2023-06-20T00:00:00.000Z"),
+    restaurant: { id: ObjectId("6491bef6cc8c6cb769c02f54"), name: 'TasteGood' }
+  }
+]
