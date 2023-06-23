@@ -1,0 +1,31 @@
+test> show dbs
+admin          40.00 KiB
+config         60.00 KiB
+local          40.00 KiB
+ratingportal  216.00 KiB
+test> use blog
+switched to db blog
+blog> db.authors.insertOne({name: "Sen", email: "sen@test.com"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6495ab5be72693948128bc77")
+}
+blog> db.authors.insertOne({name: "Jay", email: "jay@test.com"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6495ab94e72693948128bc78")
+}
+blog> db.authors.find()
+[
+  {
+    _id: ObjectId("6495ab5be72693948128bc77"),
+    name: 'Sen',
+    email: 'sen@test.com'
+  },
+  {
+    _id: ObjectId("6495ab94e72693948128bc78"),
+    name: 'Jay',
+    email: 'jay@test.com'
+  }
+]
+blog>
