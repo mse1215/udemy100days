@@ -14,7 +14,7 @@ function getDb() {
   if (!database) {
     throw { message: "데이터 베이스 연결이 설정되지 않았습니다!" };
   }
-  return database();
+  return database;
 }
 
 module.exports = {
