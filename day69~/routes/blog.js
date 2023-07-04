@@ -123,7 +123,7 @@ router.get("/posts/:id/comments", async function (req, res) {
     .find({ postId: postId })
     .toArray();
 
-  res.json();
+  res.json(comments);
 });
 router.post("/posts/:id/comments", async function (req, res) {
   const postId = new ObjectId(req.params.id);
