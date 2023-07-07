@@ -126,15 +126,16 @@ router.get("/posts/:id/comments", async function (req, res) {
   res.json(comments);
 });
 router.post("/posts/:id/comments", async function (req, res) {
-  const postId = new ObjectId(req.params.id);
-  const newComment = {
-    postId: postId,
-    title: req.body.title, //req.body가 urlcodede 인 경우에만 수행
-    text: req.body.text,
-  };
-  await db.getDb().collection("comments").insertOne(newComment);
-  // res.redirect("/posts/" + req.params.id);
-  res.json({ message: "Comment added!" });
+  // const postId = new ObjectId(req.params.id);
+  // const newComment = {
+  //   postId: postId,
+  //   title: req.body.title, //req.body가 urlcodede 인 경우에만 수행
+  //   text: req.body.text,
+  // };
+  // await db.getDb().collection("comments").insertOne(newComment);
+  // // res.redirect("/posts/" + req.params.id);
+  // res.json({ message: "Comment added!" });
+  res.status(500).json({ message: "오류!" });
 });
 
 module.exports = router;
