@@ -22,7 +22,31 @@ router.post("/signup", async function (req, res) {
   const enteredEmail = userData.email; // = userData["email"]
   const enteredConfirmEmail = userData["confirm-email"]; // '-'를 사용할 수 없으므로 대체 표기법 [] 사용
   const enteredPassword = userData.password;
+
+  if (
+    !enteredEmail ||
+    !enteredConfirmEmail ||
+    !enteredPassword ||
+    enteredPassword.trim() < 6 || //trim: 앞뒤공백제거
+    enteredEmail !== enteredConfirmEmail ||
+    !enteredEmail.includes("@")
+  ) {
+    console.log("잘못된 데이터입니다.");
+    return res.redirect("/signup");
+  }
+
+  const existingUser = await db
+    .getDb()
+    .collection("users")
+    .findOne({ email: enteredEmail });
+
+  if (existingUser) {
+    console.log("이미 가입한 이메일입니다.");
+    return res.redirect("/signup");
+  }
+
   const hashedPassword = await bcrypt.hash(enteredPassword, 12); //12 -> 해싱강도
+
   const user = {
     email: enteredEmail,
     password: hashedPassword,
@@ -63,6 +87,7 @@ router.post("/login", async function (req, res) {
 });
 
 router.get("/admin", function (req, res) {
+  //유효 권한 확인
   res.render("admin");
 });
 
