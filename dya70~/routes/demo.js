@@ -82,12 +82,20 @@ router.post("/login", async function (req, res) {
     return res.redirect("/login");
   }
 
-  console.log("사용자 인증 완료");
+  req.session.user = { id: existingUser._id, email: existingUser.email };
+  req.session.isAhthenticated = true;
+  req.session.save(function () {
+    res.redirect("/admin");
+  });
+
   res.redirect("/admin");
 });
 
 router.get("/admin", function (req, res) {
-  //유효 권한 확인
+  if (!req.session.isAhthenticated) {
+    // if (!req.session.user)
+    return res.status(401).render("401"); // 401: 액세스 거부
+  }
   res.render("admin");
 });
 
