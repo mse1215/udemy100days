@@ -10,7 +10,20 @@ router.get("/", function (req, res) {
 });
 
 router.get("/signup", function (req, res) {
-  res.render("signup");
+  let sessionInputData = req.session.inputData;
+
+  if (!sessionInputData) {
+    sessionInputData = {
+      hasError: false,
+      email: "",
+      confirmEmail: "",
+      password: "",
+    };
+  }
+
+  req.session.inputData = null;
+
+  res.render("signup", { inputData: sessionInputData });
 });
 
 router.get("/login", function (req, res) {
@@ -19,7 +32,7 @@ router.get("/login", function (req, res) {
 
 router.post("/signup", async function (req, res) {
   const userData = req.body;
-  const enteredEmail = userData.email; // = userData["email"]
+  const enteredEmail = userData.email; // userData['email']
   const enteredConfirmEmail = userData["confirm-email"]; // '-'를 사용할 수 없으므로 대체 표기법 [] 사용
   const enteredPassword = userData.password;
 
@@ -27,12 +40,23 @@ router.post("/signup", async function (req, res) {
     !enteredEmail ||
     !enteredConfirmEmail ||
     !enteredPassword ||
-    enteredPassword.trim() < 6 || //trim: 앞뒤공백제거
+    enteredPassword.trim().length < 6 || //trim: 앞뒤공백제거
     enteredEmail !== enteredConfirmEmail ||
     !enteredEmail.includes("@")
   ) {
-    console.log("잘못된 데이터입니다.");
-    return res.redirect("/signup");
+    req.session.inputData = {
+      hasError: true,
+      message: "잘못된 데이터입니다.",
+      email: enteredEmail,
+      confirmEmail: enteredConfirmEmail,
+      password: enteredPassword,
+    }; //redirect 전에 세션에 해당 데이터 저장. 인증과 딱히 관련은 없음.
+
+    req.session.save(function () {
+      res.redirect("/signup");
+    });
+    return;
+    // return res.render('signup');
   }
 
   const existingUser = await db
@@ -83,22 +107,24 @@ router.post("/login", async function (req, res) {
   }
 
   req.session.user = { id: existingUser._id, email: existingUser.email };
-  req.session.isAhthenticated = true;
+  req.session.isAuthenticated = true;
   req.session.save(function () {
     res.redirect("/admin");
   });
-
-  res.redirect("/admin");
 });
 
 router.get("/admin", function (req, res) {
-  if (!req.session.isAhthenticated) {
+  if (!req.session.isAuthenticated) {
     // if (!req.session.user)
     return res.status(401).render("401"); // 401: 액세스 거부
   }
   res.render("admin");
 });
 
-router.post("/logout", function (req, res) {});
+router.post("/logout", function (req, res) {
+  req.session.user = null;
+  req.session.isAuthenticated = false;
+  res.redirect("/");
+});
 
 module.exports = router;
