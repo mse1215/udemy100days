@@ -32,8 +32,8 @@ router.get("/login", function (req, res) {
 
 router.post("/signup", async function (req, res) {
   const userData = req.body;
-  const enteredEmail = userData.email; // userData['email']
-  const enteredConfirmEmail = userData["confirm-email"]; // '-'를 사용할 수 없으므로 대체 표기법 [] 사용
+  const enteredEmail = userData.email; // userData['email'] '-'를 사용할 수 없으므로 대체 표기법 [] 사용
+  const enteredConfirmEmail = userData["confirm-email"];
   const enteredPassword = userData.password;
 
   if (
@@ -109,16 +109,34 @@ router.post("/login", async function (req, res) {
   req.session.user = { id: existingUser._id, email: existingUser.email };
   req.session.isAuthenticated = true;
   req.session.save(function () {
-    res.redirect("/admin");
+    res.redirect("/profile");
   });
 });
 
-router.get("/admin", function (req, res) {
+router.get("/admin", async function (req, res) {
   if (!req.session.isAuthenticated) {
     // if (!req.session.user)
     return res.status(401).render("401"); // 401: 액세스 거부
   }
+
+  const user = await db
+    .getDb()
+    .collection("users")
+    .findOne({ _id: req.session.user.id });
+
+  if (!user || !user.isAdmin) {
+    res.status(403).render("403");
+  }
+
   res.render("admin");
+});
+
+router.get("/profile", function (req, res) {
+  if (!req.session.isAuthenticated) {
+    // if (!req.session.user)
+    return res.status(401).render("401"); // 401: 액세스 거부
+  }
+  res.render("profile");
 });
 
 router.post("/logout", function (req, res) {
